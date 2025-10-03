@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>光復災區資訊整合</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- 漢堡blur -->
+    <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+
+    <!-- 漢堡 -->
+    <nav class="hamburger-sidebar" id="hamburgerSidebar">
+        <button class="sidebar-close" id="sidebarClose" aria-label="關閉選單">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+        </button>
+
+        <div class="sidebar-content">
+            <!-- 地圖列表 -->
+            <a href="#" class="sidebar-item">
+                <span class="sidebar-text">地圖列表</span>
+            </a>
+
+            <!-- 志工資訊 -->
+            <div class="sidebar-accordion">
+                <button class="sidebar-tab" data-target="volunteerInfo">
+                    <span class="sidebar-text">志工資訊</span>
+                    <svg class="arrow-icon" width="7" height="12" viewBox="0 0 7 12">
+                        <path d="M1 1L6 6L1 11" stroke="white" stroke-width="2" fill="none"/>
+                    </svg>
+                </button>
+                <div class="sidebar-pages" id="volunteerInfo">
+                    <a href="#" class="sidebar-page">
+                        <span class="page-text">行前必讀</span>
+                    </a>
+                    <a href="#" class="sidebar-page">
+                        <span class="page-text">交通資訊</span>
+                    </a>
+                    <a href="#" class="sidebar-page">
+                        <span class="page-text">住宿資訊</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- 災民協助 -->
+            <div class="sidebar-accordion">
+                <button class="sidebar-tab" data-target="victimHelp">
+                    <span class="sidebar-text">災民協助</span>
+                    <svg class="arrow-icon" width="7" height="12" viewBox="0 0 7 12">
+                        <path d="M1 1L6 6L1 11" stroke="white" stroke-width="2" fill="none"/>
+                    </svg>
+                </button>
+                <div class="sidebar-pages" id="victimHelp">
+                    <a href="#" class="sidebar-page">
+                        <span class="page-text">庇護所</span>
+                    </a>
+                    <a href="#" class="sidebar-page">
+                        <span class="page-text">醫療站</span>
+                    </a>
+                    <a href="#" class="sidebar-page">
+                        <span class="page-text">心理援助</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- 找/送物資 -->
+            <a href="#" class="sidebar-item">
+                <span class="sidebar-text">找/送物資</span>
+            </a>
+
+            <!-- 當/找志工 -->
+            <a href="#" class="sidebar-item">
+                <span class="sidebar-text">當/找志工</span>
+            </a>
+
+            <!-- 志工感謝頁 -->
+            <a href="#" class="sidebar-item">
+                <span class="sidebar-text">志工感謝頁</span>
+            </a>
+
+            <!-- 社群連結 -->
+            <a href="#" class="sidebar-item">
+                <span class="sidebar-text">社群連結</span>
+            </a>
+
+            <!-- 隱私權政策 -->
+            <a href="#" class="sidebar-item">
+                <span class="sidebar-text">隱私權政策</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="header">
+        <button class="hamburger-btn" id="hamburgerBtn" aria-label="開啟選單">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M3 12h18M3 6h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+        </button>
+
+        <div class="logo">
+            <span>光復救災資訊整合</span>
+        </div>
+
+        <button class="share-btn" id="shareBtn" aria-label="分享">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M18 8a3 3 0 100-6 3 3 0 000 6zM6 15a3 3 0 100-6 3 3 0 000 6zM18 22a3 3 0 100-6 3 3 0 000 6zM8.59 13.51l6.83 3.98M15.41 6.51l-6.82 3.98" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </button>
+    </header>
+
+    <!-- Tab -->
+    <div class="tab-row">
+        <button class="tab active" data-tab="map">現場地圖</button>
+        <button class="tab" data-tab="volunteer">志工資訊</button>
+        <button class="tab" data-tab="victim">災民協助</button>
+    </div>
+
+    <!-- 避難守則 Banner -->
+    <button class="evacuation-banner" id="evacuationBanner">
+        現場隨時有溢流風險，點此詳讀避難守則<br>警報響起請往住高處避難
+    </button>
+
+    <!-- 避難守則blur -->
+    <div class="modal-backdrop" id="modalBackdrop"></div>
+
+    <!-- 避難守則 -->
+    <div class="evacuation-modal" id="evacuationModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">避難守則</h2>
+                <button class="modal-close" id="modalClose" aria-label="關閉">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <p class="warning-text">
+                    <span class="text-white">堰塞湖隨時有溢流風險</span><br>
+                    <span class="text-red">若警報響起，請儘速往<br>高處或高樓層避難</span>
+                </p>
+
+                <div class="alert-button">
+                    <div class="alert-icon">
+                        <svg width="48" height="48" viewBox="0 0 48 48" fill="white">
+                            <path d="M24 4v8m0 24v8m12-20h8m-24 0H4m31.5-7.5l5.7-5.7m-26.4 0l-5.7-5.7m26.4 26.4l5.7 5.7m-26.4 0l-5.7 5.7"/>
+                        </svg>
+                    </div>
+                    <div class="alert-info">
+                        <p class="alert-title">海嘯警報（無語音）</p>
+                        <p class="alert-desc">鳴5秒、停5秒<br>重複9遍，共85秒</p>
+                    </div>
+                </div>
+
+                <div class="alert-button">
+                    <div class="alert-icon">
+                        <svg width="48" height="48" viewBox="0 0 48 48" fill="white">
+                            <path d="M24 4v8m0 24v8m12-20h8m-24 0H4m31.5-7.5l5.7-5.7m-26.4 0l-5.7-5.7m26.4 26.4l5.7 5.7m-26.4 0l-5.7 5.7"/>
+                        </svg>
+                    </div>
+                    <div class="alert-info">
+                        <p class="alert-title">解除警報</p>
+                        <p class="alert-desc">一長聲90秒</p>
+                    </div>
+                </div>
+
+                <p class="modal-footer-text">
+                    如未聽到警報，請勿信假訊息！<br>並請大家協助轉傳正確資訊
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 地圖/列表切換 -->
+    <div class="map-toggle-container">
+        <button class="toggle-button" id="toggleButton">
+            <span class="toggle-text">地圖顯示</span>
+            <svg class="toggle-arrow" id="toggleArrow" width="12" height="8" viewBox="0 0 12 8">
+                <path d="M1 1L6 6L11 1" stroke="#757575" stroke-width="2" fill="none"/>
+            </svg>
+        </button>
+        <button class="toggle-option" id="listOption" style="display: none;">
+            <span class="toggle-text">列表顯示</span>
+        </button>
+    </div>
+
+    <!-- 地圖區域 -->
+    <main class="map-container">
+        <!-- 後端地圖 iframe ??? -->
+        <iframe 
+            id="mapIframe" 
+            src="about:blank" 
+            frameborder="0"
+            title="災區地圖"
+            allow="geolocation"
+        ></iframe>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <button class="footer-button">我/送物資</button>
+        <button class="footer-button">當/找志工</button>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
