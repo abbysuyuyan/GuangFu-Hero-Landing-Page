@@ -1,0 +1,552 @@
+:root {
+    --primary: #C96319;
+    --black: #1E1E1E;
+    --bg: #F7EBE0;
+    --grey: #434343;
+    --warning: #610900;
+    --banner: #F23555;
+    --white: #FFFFFF;
+    --grey2: #838383;
+    --grey3: #E6E6E6;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px; /* 手G */
+}
+
+body {
+    font-family: "Noto Sans TC", sans-serif;
+    background-color: var(--bg);
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Header */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 64px;
+    background: var(--primary);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 20px;
+    z-index: 100;
+}
+
+.hamburger-btn,
+.share-btn {
+    width: 24px;
+    height: 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--white);
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--white);
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+/* Tab */
+.tab-row {
+    position: fixed;
+    top: 64px;
+    left: 0;
+    width: 100%;
+    display: flex;
+    background: var(--white);
+    padding: 8px 20px;
+    gap: auto;
+    justify-content: space-around;
+    border-bottom: 4px solid var(--primary);
+    z-index: 99;
+}
+
+.tab {
+    background: none;
+    border: none;
+    padding: 12px;
+    color: var(--black);
+    font-family: "Noto Sans TC", sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.tab.active {
+    font-weight: 600;
+}
+
+.tab.active::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--primary);
+}
+
+.tab:hover {
+    color: var(--primary);
+}
+
+/* Banner */
+.evacuation-banner {
+    position: fixed;
+    top: calc(64px + 56px); /* Header + Tab */
+    left: 0;
+    display: flex;
+    width: 100%;
+    padding: 12px 20px;
+    justify-content: center;
+    align-items: center;
+    background: var(--banner);
+    color: var(--white);
+    border: none;
+    font-family: "Noto Sans TC", sans-serif;
+    font-size: 0.875rem;
+    line-height: 1.2;
+    cursor: pointer;
+    z-index: 98;
+    text-align: center;
+}
+
+/* Toggle */
+.map-toggle-container {
+    position: fixed;
+    top: calc(64px + 56px + 48px); /* Header + Tab + Banner */
+    left: 0;
+    width: 100%;
+    background: var(--bg);
+    z-index: 97;
+    padding: 12px 20px;
+}
+
+.toggle-button {
+    display: flex;
+    width: 100%;
+    padding: 12px 20px;
+    align-items: center;
+    justify-content: space-between;
+    background: #F4F4F4;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.toggle-option {
+    display: flex;
+    width: 100%;
+    padding: 12px 20px;
+    align-items: center;
+    justify-content: center;
+    background: #F4F4F4;
+    border: none;
+    border-radius: 8px;
+    margin-top: 8px;
+    cursor: pointer;
+}
+
+.toggle-text {
+    color: #757575;
+    font-family: "Noto Sans TC", sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.25rem;
+}
+
+.toggle-arrow {
+    transition: transform 0.3s ease;
+}
+
+.toggle-arrow.expanded {
+    transform: rotate(180deg);
+}
+
+/* Map Container */
+.map-container {
+    position: fixed;
+    top: calc(64px + 56px + 48px + 72px); /* Header + Tab + Banner + Toggle */
+    left: 0;
+    right: 0;
+    bottom: 120px; /* Footer height */
+    width: 100%;
+    background: var(--bg);
+}
+
+.map-container iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* Footer */
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    padding: 20px 20px 60px 20px;
+    align-items: center;
+    gap: 12px;
+    background: var(--bg);
+    box-shadow: 0 -1px 10px 0 rgba(30, 30, 30, 0.14);
+    z-index: 90;
+}
+
+.footer-button {
+    flex: 1;
+    display: inline-flex;
+    padding: 16px 24px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 14px;
+    background: var(--primary);
+    box-shadow: -1px -1px 10px 0 rgba(0, 0, 0, 0.14), 1px 1px 10px 0 rgba(0, 0, 0, 0.14);
+    border: none;
+    color: var(--white);
+    font-family: "Noto Sans TC", sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 25px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.footer-button:hover,
+.footer-button:active {
+    background: var(--black);
+}
+
+/* 漢寶包 */
+.sidebar-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.20);
+    backdrop-filter: blur(2px);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    z-index: 199;
+}
+
+.sidebar-backdrop.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.hamburger-sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 280px;
+    height: 100vh;
+    background: var(--black);
+    box-shadow: 1px 0 4px 0 rgba(0, 0, 0, 0.25);
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    z-index: 200;
+    overflow-y: auto;
+}
+
+.hamburger-sidebar.active {
+    transform: translateX(0);
+}
+
+.sidebar-close {
+    position: absolute;
+    top: 25px;
+    left: 25px;
+    width: 24px;
+    height: 24px;
+    background: none;
+    border: none;
+    color: var(--white);
+    cursor: pointer;
+    padding: 0;
+    z-index: 10;
+}
+
+.sidebar-content {
+    margin-top: 80px;
+}
+
+.sidebar-item,
+.sidebar-tab,
+.sidebar-page {
+    display: flex;
+    width: 100%;
+    padding: 20px;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--grey);
+    background: var(--black);
+    text-decoration: none;
+}
+
+.sidebar-item,
+.sidebar-tab {
+    border: none;
+    cursor: pointer;
+}
+
+.sidebar-text {
+    color: var(--white);
+    font-family: "Noto Sans TC", sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 20px;
+}
+
+.page-text {
+    color: var(--grey3);
+    font-family: "Noto Sans TC", sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+}
+
+.arrow-icon {
+    transition: transform 0.3s ease;
+}
+
+.sidebar-tab.active .arrow-icon {
+    transform: rotate(-90deg);
+}
+
+.sidebar-pages {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+.sidebar-pages.active {
+    max-height: 500px;
+}
+
+/* 救命快逃 */
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.20);
+    backdrop-filter: blur(2px);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    z-index: 299;
+}
+
+.modal-backdrop.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.evacuation-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.9);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 300;
+}
+
+.evacuation-modal.active {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    display: flex;
+    width: 335px;
+    padding: 24px;
+    flex-direction: column;
+    gap: 24px;
+    border-radius: 20px;
+    background: var(--black);
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.25);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-title {
+    flex: 1;
+    color: var(--white);
+    text-align: center;
+    font-family: "Noto Sans TC", sans-serif;
+    font-size: 1.25rem;
+    font-weight: 500;
+    line-height: 1.5625rem;
+}
+
+.modal-close {
+    width: 24px;
+    height: 24px;
+    background: none;
+    border: none;
+    color: var(--white);
+    cursor: pointer;
+    padding: 0;
+}
+
+.modal-body {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.warning-text {
+    text-align: center;
+    line-height: 1.5;
+}
+
+.text-white {
+    color: var(--white);
+    font-family: "Noto Sans TC", sans-serif;
+    font-size: 1.5rem;
+    font-weight: 500;
+    line-height: 1.875rem;
+}
+
+.text-red {
+    color: var(--banner);
+    font-family: "Noto Sans TC", sans-serif;
+    font-size: 1.75rem;
+    font-weight: 500;
+    line-height: 2.1875rem;
+}
+
+.alert-button {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+}
+
+.alert-icon {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.alert-info {
+    flex: 1;
+}
+
+.alert-title {
+    color: var(--white);
+    font-family: "Noto Sans TC", sans-serif;
+    font-size: 1.25rem;
+    font-weight: 500;
+    line-height: 1.5625rem;
+    margin-bottom: 4px;
+}
+
+.alert-desc {
+    color: var(--white);
+    font-family: "Noto Sans TC", sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.25rem;
+}
+
+.modal-footer-text {
+    color: var(--white);
+    text-align: center;
+    font-family: "Noto Sans TC", sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.25rem;
+}
+
+/* 平板 */
+@media (min-width: 768px) {
+    html {
+        font-size: 20px;
+    }
+    
+    .header {
+        height: 80px;
+    }
+    
+    .tab-row {
+        top: 80px;
+    }
+    
+    .evacuation-banner {
+        top: calc(80px + 60px);
+    }
+    
+    .map-toggle-container {
+        top: calc(80px + 60px + 56px);
+    }
+    
+    .map-container {
+        top: calc(80px + 60px + 56px + 80px);
+    }
+}
+
+/* 電腦 */
+@media (min-width: 1024px) {
+    html {
+        font-size: 20px;
+    }
+    
+    .header {
+        height: 96px;
+    }
+    
+    .tab-row {
+        top: 96px;
+    }
+    
+    .evacuation-banner {
+        top: calc(96px + 72px);
+    }
+    
+    .map-toggle-container {
+        top: calc(96px + 72px + 64px);
+    }
+    
+    .map-container {
+        top: calc(96px + 72px + 64px + 96px);
+    }
+}
