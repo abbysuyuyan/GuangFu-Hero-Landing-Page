@@ -332,7 +332,7 @@ body {
 }
 
 .arrow-icon {
-    transition: transform 0.3s ease;
+    transition: transform 0.7s ease;
     transform: rotate(-90deg); 
 }
 
@@ -343,7 +343,7 @@ body {
 .sidebar-pages {
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.3s ease;
+    transition: max-height 0.7s ease;
 }
 
 .sidebar-pages.active {
