@@ -138,34 +138,45 @@ body {
     top: calc(64px + 56px + 48px); /* Header + Tab + Banner */
     left: 0;
     width: 100%;
-    background: var(--bg);
+    background: transparent; 
     z-index: 97;
-    padding: 12px 20px;
+    padding: 12px 20px; 
 }
 
 .toggle-button {
     display: flex;
-    width: 100%;
-    padding: 12px 20px;
+    padding: 0.5rem;
     align-items: center;
-    justify-content: space-between;
+    gap: 0.25rem;
+    align-self: stretch;
     background: #F4F4F4;
     border: none;
     border-radius: 8px;
     cursor: pointer;
+    justify-content: space-between; 
 }
 
 .toggle-option {
     display: flex;
-    width: 100%;
-    padding: 12px 20px;
+    padding: 0.5rem;
     align-items: center;
-    justify-content: center;
+    gap: 0.25rem;
+    align-self: stretch;
     background: #F4F4F4;
     border: none;
     border-radius: 8px;
     margin-top: 8px;
     cursor: pointer;
+    justify-content: center;
+    
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.toggle-option.active {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .toggle-text {
