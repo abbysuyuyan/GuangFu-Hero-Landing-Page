@@ -198,10 +198,10 @@ body {
 /* Map Container */
 .map-container {
     position: fixed;
-    top: calc(64px + 56px + 48px + 72px); /* Header + Tab + Banner + Toggle */
+    top: calc(64px + 56px + 48px + 12px + 40px + 12px); 
     left: 0;
     right: 0;
-    bottom: 120px; /* Footer height */
+    bottom: 120px; /* Footer */
     width: 100%;
     background: var(--bg);
 }
