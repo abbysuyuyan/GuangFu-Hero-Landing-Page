@@ -48,20 +48,17 @@ sidebarTabs.forEach(tab => {
         const targetId = this.getAttribute('data-target');
         const targetPages = document.getElementById(targetId);
         
-        // 如果點擊的是當前打開的頁籤，則收合
         if (currentOpenAccordion === this) {
             this.classList.remove('active');
             targetPages.classList.remove('active');
             currentOpenAccordion = null;
         } else {
-            // 關閉之前打開的頁籤
             if (currentOpenAccordion) {
                 currentOpenAccordion.classList.remove('active');
                 const prevTargetId = currentOpenAccordion.getAttribute('data-target');
                 document.getElementById(prevTargetId).classList.remove('active');
             }
             
-            // 打開新的頁籤
             this.classList.add('active');
             targetPages.classList.add('active');
             currentOpenAccordion = this;
@@ -85,31 +82,21 @@ evacuationBanner.addEventListener('click', openModal);
 modalClose.addEventListener('click', closeModal);
 modalBackdrop.addEventListener('click', closeModal);
 
+// Toggle
 let isListVisible = false;
 
 toggleButton.addEventListener('click', function() {
     isListVisible = !isListVisible;
     
     if (isListVisible) {
-        // 展開列表顯示
         listOption.style.display = 'flex';
         toggleArrow.classList.add('expanded');
         
-        // 動畫效果
-        requestAnimationFrame(() => {
-            listOption.style.opacity = '0';
-            listOption.style.transform = 'translateY(-10px)';
-            
-            requestAnimationFrame(() => {
-                listOption.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
-                listOption.style.opacity = '1';
-                listOption.style.transform = 'translateY(0)';
-            });
-        });
+        setTimeout(() => {
+            listOption.classList.add('active');
+        }, 10);
     } else {
-        // 收合列表顯示
-        listOption.style.opacity = '0';
-        listOption.style.transform = 'translateY(-10px)';
+        listOption.classList.remove('active');
         toggleArrow.classList.remove('expanded');
         
         setTimeout(() => {
@@ -120,13 +107,11 @@ toggleButton.addEventListener('click', function() {
 
 tabs.forEach(tab => {
     tab.addEventListener('click', function() {
-        // 移除所有
         tabs.forEach(t => t.classList.remove('active'));
         
-        // 添加到當前點擊的 tab
+        // 加到點擊的 tab
         this.classList.add('active');
         
-        // 根據不同的 tab 載入不同的內容
         const tabType = this.getAttribute('data-tab');
         console.log('切換到:', tabType);
         
