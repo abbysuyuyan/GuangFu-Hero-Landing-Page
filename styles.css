@@ -90,7 +90,7 @@ body {
     font-weight: 400;
     cursor: pointer;
     position: relative;
-    transition: all 0.3s ease;
+    transition: all 0.7s ease;
 }
 
 .tab.active {
@@ -177,7 +177,7 @@ body {
 }
 
 .toggle-arrow {
-    transition: transform 0.3s ease;
+    transition: transform 0.7s ease;
 }
 
 .toggle-arrow.expanded {
