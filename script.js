@@ -32,6 +32,15 @@ hamburgerBtn.addEventListener('click', openSidebar);
 sidebarClose.addEventListener('click', closeSidebar);
 sidebarBackdrop.addEventListener('click', closeSidebar);
 
+// 用關閉漢堡回到地圖的邏輯可以嗎
+const sidebarItems = document.querySelectorAll('.sidebar-item');
+
+sidebarItems.forEach(item => {
+    item.addEventListener('click', function(e) {
+        closeSidebar();
+    });
+});
+
 let currentOpenAccordion = null;
 
 sidebarTabs.forEach(tab => {
