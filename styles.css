@@ -333,10 +333,11 @@ body {
 
 .arrow-icon {
     transition: transform 0.3s ease;
+    transform: rotate(-90deg); 
 }
 
 .sidebar-tab.active .arrow-icon {
-    transform: rotate(-90deg);
+    transform: rotate(90deg); 
 }
 
 .sidebar-pages {
